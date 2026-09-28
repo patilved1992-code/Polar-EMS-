@@ -45,7 +45,54 @@ export function App() {
         setActiveScenario(tData.active_scenario);
       }
     } catch (err) {
-      console.error('Failed to sync telemetry:', err);
+      console.warn('Backend offline or connecting, using autonomous edge fallback:', err);
+      setTelemetry((prev) => {
+        if (prev && !prev.is_simulated) return prev;
+        const now = new Date();
+        const baseLoad = stationId === 'bharati' ? 68.4 : 52.1;
+        const windGen = 92.5 + Math.sin(Date.now() / 5000) * 8;
+        return {
+          timestamp: now.toISOString(),
+          station_id: stationId,
+          load_kw: Math.round(baseLoad * 10) / 10,
+          solar_kw: 0.0,
+          wind_kw: Math.round(windGen * 10) / 10,
+          generator_kw: 0.0,
+          battery_kw: Math.round((baseLoad - windGen) * 10) / 10,
+          battery_soc: 94.0,
+          fuel_rate: 0.0,
+          temperature: -26.4,
+          is_simulated: true,
+          renewable_kw: Math.round(windGen * 10) / 10,
+          renewable_pct: 100.0,
+          co2_rate_kg_per_hr: 0.0,
+          system_health_pct: 96.0,
+          survival_mode: false,
+          active_scenario: 'normal',
+          alert_count: 2,
+          station_local_time: now.toLocaleTimeString(),
+          station_timezone: stationId === 'bharati' ? 'UTC+05:00 (Bharati)' : 'UTC+05:00 (Maitri)',
+          station_utc_offset: 5.0,
+          utc_time: now.toUTCString(),
+          min_soc: 35.0,
+        };
+      });
+      setWeather((prev) => {
+        if (prev) return prev;
+        return {
+          timestamp: new Date().toISOString(),
+          temperature: -26.4,
+          wind_speed: 23.3,
+          wind_direction: 151.0,
+          pressure: 999.2,
+          humidity: 72.5,
+          solar_irradiance: 0.0,
+          cloud_cover: 0.44,
+          condition_label: 'Polar Katabatic Wind Loop',
+          gust_speed: 31.5,
+          wind_chill_c: -39.4,
+        };
+      });
     }
   }, [stationId]);
 
