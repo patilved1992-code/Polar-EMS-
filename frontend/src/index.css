@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+:root,
+[data-theme="arctic"] {
+  color-scheme: dark;
+  --color-slate-950: #080d1a;
+  --color-slate-900: #0e172a;
+  --color-slate-850: #131f37;
+  --color-slate-800: #1e293b;
+  --color-slate-700: #334155;
+  --color-slate-600: #475569;
+  --color-slate-500: #64748b;
+  --color-slate-400: #94a3b8;
+  --color-slate-300: #cbd5e1;
+  --color-slate-200: #e2e8f0;
+  --color-slate-100: #f1f5f9;
+  --color-white: #ffffff;
+  --color-cyan-200: #a5f3fc;
+  --color-cyan-300: #67e8f9;
+  --color-cyan-400: #22d3ee;
+  --color-cyan-500: #06b6d4;
+  --color-cyan-600: #0891b2;
+  --color-cyan-900: #164e63;
+  --color-cyan-950: #083344;
+}
+
+[data-theme="emerald"] {
+  color-scheme: dark;
+  --color-slate-950: #030f08;
+  --color-slate-900: #071c11;
+  --color-slate-850: #0c2719;
+  --color-slate-800: #113824;
+  --color-slate-700: #1b4d33;
+  --color-slate-600: #2b6c49;
+  --color-slate-500: #498b67;
+  --color-slate-400: #81be9d;
+  --color-slate-300: #b5e4cc;
+  --color-slate-200: #dcf7e9;
+  --color-slate-100: #f0fdf6;
+  --color-white: #ffffff;
+  --color-cyan-200: #a7f3d0;
+  --color-cyan-300: #6ee7b7;
+  --color-cyan-400: #34d399;
+  --color-cyan-500: #10b981;
+  --color-cyan-600: #059669;
+  --color-cyan-900: #064e3b;
+  --color-cyan-950: #022c22;
+}
+
+[data-theme="amber"] {
+  color-scheme: dark;
+  --color-slate-950: #0f0b06;
+  --color-slate-900: #1a130a;
+  --color-slate-850: #241b0f;
+  --color-slate-800: #332616;
+  --color-slate-700: #4d3a22;
+  --color-slate-600: #6e5433;
+  --color-slate-500: #96764d;
+  --color-slate-400: #c6a77b;
+  --color-slate-300: #e6cfaf;
+  --color-slate-200: #f7ebda;
+  --color-slate-100: #fffbeb;
+  --color-white: #ffffff;
+  --color-cyan-200: #fde68a;
+  --color-cyan-300: #fcd34d;
+  --color-cyan-400: #fbbf24;
+  --color-cyan-500: #f59e0b;
+  --color-cyan-600: #d97706;
+  --color-cyan-900: #78350f;
+  --color-cyan-950: #451a03;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --color-slate-950: #f1f5f9;
+  --color-slate-900: #ffffff;
+  --color-slate-850: #f8fafc;
+  --color-slate-800: #e2e8f0;
+  --color-slate-700: #cbd5e1;
+  --color-slate-600: #94a3b8;
+  --color-slate-500: #64748b;
+  --color-slate-400: #475569;
+  --color-slate-300: #334155;
+  --color-slate-200: #1e293b;
+  --color-slate-100: #0f172a;
+  --color-white: #0f172a;
+  --color-cyan-200: #bae6fd;
+  --color-cyan-300: #0284c7;
+  --color-cyan-400: #0369a1;
+  --color-cyan-500: #0284c7;
+  --color-cyan-600: #075985;
+  --color-cyan-900: #bae6fd;
+  --color-cyan-950: #e0f2fe;
+}
+
+/* Ensure colored badges and action buttons retain true white text in light theme */
+[data-theme="light"] [class*="bg-cyan-500"],
+[data-theme="light"] [class*="bg-cyan-600"],
+[data-theme="light"] [class*="bg-blue-"],
+[data-theme="light"] [class*="bg-emerald-500"],
+[data-theme="light"] [class*="bg-emerald-600"],
+[data-theme="light"] [class*="bg-rose-"],
+[data-theme="light"] [class*="bg-amber-500"],
+[data-theme="light"] [class*="from-cyan-"] {
+  color: #ffffff !important;
+}
+
+[data-theme="light"] [class*="bg-cyan-500"] *,
+[data-theme="light"] [class*="bg-cyan-600"] *,
+[data-theme="light"] [class*="bg-blue-"] *,
+[data-theme="light"] [class*="bg-emerald-500"] *,
+[data-theme="light"] [class*="bg-emerald-600"] *,
+[data-theme="light"] [class*="bg-rose-"] *,
+[data-theme="light"] [class*="bg-amber-500"] *,
+[data-theme="light"] [class*="from-cyan-"] * {
+  --color-white: #ffffff;
+}
+
+/* Light mode card elevation & contrast enhancements */
+[data-theme="light"] .border-slate-800 {
+  border-color: #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .shadow-xl {
+  box-shadow: 0 4px 14px -2px rgba(0, 0, 0, 0.06);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-slate-950);
+  color: var(--color-slate-100);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Custom industrial scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-slate-950);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-slate-800);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-slate-700);
+}

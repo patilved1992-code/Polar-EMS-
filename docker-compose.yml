@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: polar_ems_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
+      - DATABASE_URL=sqlite:///./polar_ems.db
+      - POLAR_CO2_FACTOR=2.68
+      - POLAR_FUEL_COST=1.45
+      - POLAR_MIN_BESS_RESERVE=30.0
+      - POLAR_LLM_PROVIDER=local
+    volumes:
+      - ./data:/app/data
+      - backend_data:/app/db
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: polar_ems_frontend
+    restart: always
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend_data:

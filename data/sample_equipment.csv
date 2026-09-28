@@ -1,0 +1,10 @@
+id,station_id,name,type,capacity_kw,health_score,status,hours_run,anomaly_prob,last_serviced
+gen-1,bharati,Generator G1 (Primary),generator,120.0,94.5,standby,3420,0.04,2026-01-15
+gen-2,bharati,Generator G2 (Secondary),generator,100.0,71.0,operational,4890,0.84,2025-11-10
+gen-3,bharati,Generator G3 (Emergency),generator,80.0,98.0,standby,640,0.02,2026-02-01
+bat-1,bharati,Main LiFePO4 Battery Bank,battery,500.0,88.5,operational,12400,0.12,2026-01-20
+inv-1,bharati,Solar Inverter Bank A,solar_inverter,90.0,82.0,operational,8900,0.28,2025-12-05
+wnd-1,bharati,Wind Turbine Array Alpha,wind_turbine,120.0,86.0,operational,7600,0.15,2026-01-10
+hvac-1,bharati,Station Thermal Loop HVAC,hvac,65.0,92.0,operational,9200,0.08,2026-02-12
+m-gen-1,maitri,Maitri Diesel Gen A,generator,100.0,89.0,operational,6100,0.09,2026-01-05
+m-bat-1,maitri,Maitri BESS Storage,battery,350.0,91.0,operational,9400,0.07,2026-01-18
